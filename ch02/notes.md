@@ -16,9 +16,13 @@ Non-Haskell commands specific to controlling and managing GHCi session.
 
 ***:load,l*** : Load a Haskell source file into GHCi session.
 
-***:reload,r*** : reload the same source file.
+***:reload,r*** : Reload the same source file.
 
 ***:module,m*** : Unload the current module.
+
+***:type,t*** : Get the type of a value, expression, or function in GHCi.
+
+***:set*** : Sets the prompt to specified string. Ex: `:set prompt "λ> "`
 
 
 
