@@ -12,7 +12,7 @@ Non-Haskell commands specific to controlling and managing GHCi session.
 
 ***:quit,q*** : Quit session.
 
-***:info,i*** : Info about an operator / function.
+***:info,i*** : Info about an operator / function. The datatype definition for datatypes.
 
 ***:load,l*** : Load a Haskell source file into GHCi session.
 
