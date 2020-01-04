@@ -20,7 +20,7 @@ Non-Haskell commands specific to controlling and managing GHCi session.
 
 ***:module,m*** : Unload the current module.
 
-***:type,t*** : Get the type of a value, expression, or function in GHCi.
+***:type,t*** : Get the *type* of a value, expression, or function in GHCi.
 
 ***:set*** : Sets the prompt to specified string. Ex: `:set prompt "λ> "`
 
