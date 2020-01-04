@@ -131,4 +131,4 @@ Don't use. Partial function. Throws. Bad.
 
 
 
-![](.\type-class-heirarchy.PNG)
+![](type-class-heirarchy.PNG)
