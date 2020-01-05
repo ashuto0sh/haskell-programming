@@ -24,6 +24,8 @@ Non-Haskell commands specific to controlling and managing GHCi session.
 
 ***:set*** : Sets the prompt to specified string. Ex: `:set prompt "λ> "`
 
+***:{ and :}*** : Multi-line functions in GHCi prompt.
+
 
 
 ### Haskell Expressions
