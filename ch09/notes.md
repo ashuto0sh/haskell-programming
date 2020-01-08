@@ -110,3 +110,60 @@ Prelude> take 2 $ filter odd [1, 2, 3, undefined]
 -- laazyyy
 ```
 
+
+
+### Transforming list of values
+
+```haskell
+map :: (a -> b) -> [a] -> [b]
+fmap :: Functor f => (a -> b) -> f a -> f b
+
+map :: (a -> b) -> [a] -> [b]
+map   _   []   = []
+--   [1]  [2]    [3]
+map  f  (x:xs) = f x   :  map f xs
+--  [4]   [5]    [6]  [7]   [8]
+```
+
+1. `_` is used here to ignore the function argument because we don’t need it. 
+2. We are pattern matching on the `[]` empty list case because List is a sum type with two cases and we must handle both every time we pattern match or case on a list value. 
+3. We return the `[]` empty list value because when there are no values, it’s the only correct thing we can do. If you attempt to do anything else, the typechecker will swat you. 
+4. We bind the function argument to the name 𝑓 as it merits no name more specific than this. 𝑓 and 𝑔 are common names for nonspecific function values in Haskell. This is the function we are mapping over the list value with map.
+5. We do not leave the entire list argument bound as a single name. Since we’ve already pattern matched the `[]` empty list case, we know there must be at least one value in the list. Here we pattern match into the `(:)` second data constructor of the list, which is a product. 𝑥 is the single value of the cons product. 𝑥𝑠 is the rest of the list. 
+6. We apply our function 𝑓 to the single value 𝑥. This part of the map function is what applies the function argument to the contents of the list. 
+7. We `(:)` cons the value returned by the expression `f x` onto the head of the result of `map`’ing the rest of the list. Data is immutable in Haskell. When we map, we do not mutate the existing list, but build a new list with the values that result from applying the function. 
+8. We call map itself applied to 𝑓 and 𝑥𝑠. This expression is the rest of the list with the function 𝑓 applied to each value.
+
+
+
+### Filtering lists of values
+
+```haskell
+filter :: (a -> Bool) -> [a] -> [a]
+filter _ [] = []
+filter pred (x:xs)
+	| pred x = x : filter pred xs
+	| otherwise = filter pred xs
+	
+Prelude> filter even [1..10]
+[2,4,6,8,10]
+```
+
+
+
+### Zipping lists
+
+```haskell
+*Exercise> :t zip
+zip :: [a] -> [b] -> [(a, b)]
+*Exercise> :t zipWith
+zipWith :: (a -> b -> c) -> [a] -> [b] -> [c]
+```
+
+
+
+
+
+In type theory, a *product type* is a type made of a set of types compounded over each other. In Haskell we represent products using tuples or data constructors with more than one argument. The “compounding” is from each type argument to the data constructor representing a value that coexists with all the other values simultaneously. Products of types represent a conjunction, “and,” of those types. If you have a product of `Bool` and `Int`, your terms will each contain a `Bool` and `Int` value. 
+
+In type theory, a *sum type* of two types is a type whose terms are terms in either type, but not simultaneously. In Haskell sum types are represented using the pipe, `|`, in a datatype definition. Sums of types represent a disjunction, “or,” of those types. If you have a sum of `Bool` and `Int`, your terms will be *either* a `Bool` value or an `Int` value.
