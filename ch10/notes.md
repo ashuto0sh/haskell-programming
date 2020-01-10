@@ -91,3 +91,33 @@ foldl (^) 2 [1..3]
 ### Comparison
 
 An important difference between `foldr` and `foldl` is that a left fold has the successive steps of the fold as its first argument. The next recursion of the spine isn’t intermediated by the folding function as it is in `foldr`, which also means recursion of the spine is unconditional. Having a function that doesn’t force evaluation of either of its arguments won’t change anything.
+
+What differentiates `foldr` and `foldl` is associativity. The right associativity of `foldr` means the folding function evaluates from the innermost cons cell to the outermost (the head). On the other hand, `foldl` recurses unconditionally to the end of the list through self-calls and then the folding function evaluates from the outermost cons cell to the innermost.
+
+```haskell
+foldr f z xs = foldl (flip f) z (reverse xs)
+```
+
+
+
+### Scans
+
+```haskell
+foldr :: (a -> b -> b) -> b -> [a] -> b 
+scanr :: (a -> b -> b) -> b -> [a] -> [b] 
+
+foldl :: (b -> a -> b) -> b -> [a] -> b 
+scanl :: (b -> a -> b) -> b -> [a] -> [b]
+
+```
+
+```haskell
+scanr (+) 0 [1..3] 
+[1 + (2 + (3 + 0)), 2 + (3 + 0), 3 + 0, 0] 
+[6, 5, 3, 0] 
+
+scanl (+) 0 [1..3] 
+[0, 0 + 1, 0 + 1 + 2, 0 + 1 + 2 + 3] 
+[0, 1, 3, 6]
+```
+
