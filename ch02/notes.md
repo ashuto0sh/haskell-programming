@@ -26,7 +26,9 @@ Non-Haskell commands specific to controlling and managing GHCi session.
 
 ***:{ and :}*** : Multi-line functions in GHCi prompt.
 
-***:sprint*** : Print variables and see what has been evaluated already, with the underscore representing expressions that haven’t been evaluated yet.
+***:sprint,s*** : Print variables and see what has been evaluated already, with the underscore representing expressions that haven’t been evaluated yet.
+
+***:kind,k*** : Print kind signature of a type constructor.
 
 
 
