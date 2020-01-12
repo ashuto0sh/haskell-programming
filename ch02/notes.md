@@ -28,7 +28,7 @@ Non-Haskell commands specific to controlling and managing GHCi session.
 
 ***:sprint,s*** : Print variables and see what has been evaluated already, with the underscore representing expressions that haven’t been evaluated yet.
 
-***:kind,k*** : Print kind signature of a type constructor.
+***:kind,k*** : Print kind signature of a *type constructor*.
 
 
 
