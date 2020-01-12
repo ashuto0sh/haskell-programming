@@ -30,6 +30,8 @@ Non-Haskell commands specific to controlling and managing GHCi session.
 
 ***:kind,k*** : Print kind signature of a *type constructor*.
 
+***:browse*** : Browse the exposed functions of a named module.
+
 
 
 ### Haskell Expressions
