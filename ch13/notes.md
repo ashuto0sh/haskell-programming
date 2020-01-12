@@ -119,17 +119,20 @@ Data.Bool>
 *You can selectively import only a subset of exported entities from a module.*
 
 ```haskell
-Prelude> import qualified Data.Bool
+Prelude> import qualified Data.Bool as B
 Prelude> :t bool
 	<interactive>:1:1:
 	Not in scope: ‘bool’
 	Perhaps you meant ‘Data.Bool.bool’
 	
-Prelude> :t Data.Bool.bool
-Data.Bool.bool :: a -> a -> Bool -> a
+Prelude> :t Data.BooB> :i B.bool 
+B.bool :: a -> a -> B.Bool -> a         -- Defined in `Data.Bool'
 
-Prelude> :t Data.Bool.not
-Data.Bool.not :: Bool -> Bool
+B> :i Data.Bool.bool  
+B.bool :: a -> a -> B.Bool -> a         -- Defined in `Data.Bool'
+
+B> :i Data.Bool.not  
+B.not :: B.Bool -> B.Bool       -- Defined in `GHC.Classesl.not
 ```
 
 *Qualified imports allow for disambiguating similar named entities coming from different modules.*
