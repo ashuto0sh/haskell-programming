@@ -115,3 +115,32 @@ Prelude> name papu
 "Papu"
 ```
 
+
+
+### Normal Form
+
+All the existing algebraic rules for products and sums apply in type systems.
+
+```haskell
+data Fiction = Fiction deriving Show
+data Nonfiction = Nonfiction deriving Show
+data BookType = 
+	FictionBook Fiction
+	| NonfictionBook Nonfiction
+	deriving Show
+type AuthorName = String
+data Author =
+	Author (AuthorName, BookType)
+-- Author is a product type, to make it normal form, 
+-- we need to be sum of products, like below
+
+type AuthorName = String
+data Author = 
+	Fiction AuthorName 
+	| Nonfiction AuthorName 
+	deriving (Eq, Show)
+```
+
+
+
+Construction and deconstruction of values form a duality. *Data is immutable in Haskell, so values carry with them the information about how they were created.* We can use that information when we consume or deconstruct the value.
