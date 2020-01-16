@@ -86,3 +86,20 @@ There are a few solutions for addressing orphan instances:
 3. Neither the type nor the type class are yours? Define your own `newtype` wrapping the original type and now you’ve got a type that “belongs” to you for which you can rightly define type class instances. There are means of making this less annoying which we’ll discuss later.
 
 *A type must have a unique (singular) implementation of a type class in scope, and avoiding orphan instances is how we prevent conflicting instances.*
+
+```haskell
+stack ghci --package QuickCheck
+```
+
+
+
+### Semigroups
+
+```haskell
+class Semigroup a where
+	(<>) :: a -> a -> a
+
+-- And we’re left with one law:
+(a <> b) <> c = a <> (b <> c)
+```
+
