@@ -108,3 +108,12 @@ instance Monad Maybe where
 	Nothing  >>= _ = Nothing
 ```
 
+```haskell
+mkSphericalCow :: String -> Int -> Int -> Maybe Cow
+mkSphericalCow n a w =
+    noEmpty n >>=
+        \vn -> noNegative a >>=
+            \va -> noNegative w >>=
+                \vw -> weightCheck $ Cow vn va vw
+```
+
